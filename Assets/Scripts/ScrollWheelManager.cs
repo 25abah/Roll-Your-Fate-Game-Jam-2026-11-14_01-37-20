@@ -1,10 +1,17 @@
 using UnityEngine;
-
+public enum GameState
+{
+    Menu,
+    SetupPhase,
+    WavePhase,
+    GameOver
+}
 public class ScrollWheelManager : MonoBehaviour
 {
     public GameObject[] towers;
     GameObject activeTower;
     int activeTowerIndex = 0;
+    public GameState currentGameState = GameState.SetupPhase;
     void Start()
     {
         activeTower = towers[activeTowerIndex];
@@ -12,8 +19,11 @@ public class ScrollWheelManager : MonoBehaviour
 
     void Update()
     {
-        ScrollTowers();
-        SpawnTower();
+        if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
+        {
+            ScrollTowers();
+            SpawnTower();
+        }
     }
 
     void ScrollTowers()
@@ -36,7 +46,17 @@ public class ScrollWheelManager : MonoBehaviour
     void SpawnTower(){
         if (Input.GetMouseButtonDown(2))
         {
-            Instantiate(activeTower, new Vector3(0, 0, 0), Quaternion.identity);
+            Instantiate(activeTower, FindMousePosition(), Quaternion.identity);
+            activeTower.transform.position = new Vector3(activeTower.transform.position.x, activeTower.transform.position.y, 0);
         }
+    }
+
+    Vector3 FindMousePosition()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Mathf.Abs(Camera.main.transform.position.z); 
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Debug.Log("Mouse World Position: " + worldPos);
+        return worldPos;
     }
 }
