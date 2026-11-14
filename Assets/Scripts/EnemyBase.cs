@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class EnemyBase : MonoBehaviour
     public float speed;
     public GameObject enemyPrefab;
     GameObject enemyInstance;
+    Gameplay gameplay;
+    public int counter = 0;
 
     public EnemyBase(float health, int damage, int spawnRate, float speed)
     {
@@ -19,12 +22,22 @@ public class EnemyBase : MonoBehaviour
 
     void Start()
     {
-        enemyInstance = Instantiate(enemyPrefab, new Vector3(-8f, 4.4f, 0), Quaternion.identity);
+        gameplay = GetComponent<Gameplay>();
     }
 
-    void Update()
-    {
-        PathFinding(enemyInstance);
+    void FixedUpdate()
+    {   
+        counter++;
+        SpawnEnemy(5f);
+        if (enemyInstance != null)
+        {
+            PathFinding(enemyInstance);
+            if (enemyInstance.transform.position.y < -4.5f)
+            {
+                Destroy(enemyInstance);
+                gameplay.health -= damage;
+            }
+        }
     }
 
     protected void PathFinding(GameObject enemy)
@@ -57,5 +70,14 @@ public class EnemyBase : MonoBehaviour
         else{
             Debug.Log("There is an error in the pathfinding algorithm");
         }
+    }
+
+    protected void SpawnEnemy(float spawnTime){
+        if (counter == 50*spawnTime)
+        {
+            enemyInstance = Instantiate(enemyPrefab, new Vector3(-8f, 4.4f, 0), Quaternion.identity);
+            counter = 0;
+        }   
+        Debug.Log("Counter: " + counter);
     }
 }
