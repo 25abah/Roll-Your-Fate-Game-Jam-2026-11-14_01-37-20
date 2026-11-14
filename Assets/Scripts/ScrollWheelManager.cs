@@ -12,9 +12,11 @@ public class ScrollWheelManager : MonoBehaviour
     GameObject activeTower;
     int activeTowerIndex = 0;
     public GameState currentGameState = GameState.SetupPhase;
+    Gameplay gameplay;
     void Start()
     {
         activeTower = towers[activeTowerIndex];
+        gameplay = GetComponent<Gameplay>();
     }
 
     void Update()
@@ -23,6 +25,11 @@ public class ScrollWheelManager : MonoBehaviour
         {
             ScrollTowers();
             SpawnTower();
+        }
+        if (gameplay.health <= 0)
+        {
+            currentGameState = GameState.GameOver;
+            Debug.Log("Game Over");
         }
     }
 
