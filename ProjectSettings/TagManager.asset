@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tower
   - Tether
+  - Enemy
   layers:
   - Default
   - TransparentFX

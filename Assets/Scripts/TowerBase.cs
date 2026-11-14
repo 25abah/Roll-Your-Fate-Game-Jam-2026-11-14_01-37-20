@@ -1,5 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class TowerBase : MonoBehaviour
 {
@@ -8,12 +8,28 @@ public abstract class TowerBase : MonoBehaviour
     protected float damage;
     protected TetherBase lastTether = null;
     protected TetherBase nextTether = null;
+    protected CircleCollider2D targetArea;
+    private List<GameObject> targets = new List<GameObject>();
+    private const float cooldownShot = 0.5f;
+    private float cooldown = 0f;
 
     [SerializeField] private float maxDistance = 5f;
 
     void Awake()
     {
         SetVariables();
+        targetArea = GetComponent<CircleCollider2D>();
+        targetArea.radius = range;
+    }
+
+    void FixedUpdate()
+    {
+        if (targets.Count > 0 && cooldown >= cooldownShot)
+        {
+            ShootTarget();
+            cooldown -= cooldownShot;
+        }
+        cooldown += Time.fixedDeltaTime;
     }
 
     /// <summary>
@@ -68,5 +84,29 @@ public abstract class TowerBase : MonoBehaviour
             nextTether.Break();
         }
         Destroy(this);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            targets.Add(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        foreach (GameObject target in targets)
+        {
+            if (collision.gameObject == target)
+            {
+                targets.Remove(collision.gameObject);
+            }
+        }
+    }
+
+    private void ShootTarget()
+    {
+        targets[0].GetComponent<EnemyBase>().health -= damage;
     }
 }
