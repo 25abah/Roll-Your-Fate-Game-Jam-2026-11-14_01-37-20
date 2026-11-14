@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class TowerBase : MonoBehaviour
+public abstract class TowerBase : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected int price;
+    protected float range;
+    protected float damage;
+    protected TetherBase lastTether = null;
+    protected TetherBase nextTether = null;
+
+    void Awake()
     {
-        
+        SetVariables();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// set price, range, and damage variables for the tower.
+    /// </summary>
+    protected abstract void SetVariables();
 }
