@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3102134162935383781}
   - component: {fileID: 4430804789870532512}
   - component: {fileID: 7917817742309455678}
+  - component: {fileID: 2559210156930512249}
   m_Layer: 0
   m_Name: TowerExample
   m_TagString: Tower
@@ -166,3 +167,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2559210156930512249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5630332183179177806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da51f6f02b24369478a179202b02d107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerGenericTest
+  maxDistance: 5
