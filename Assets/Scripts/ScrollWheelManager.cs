@@ -1,16 +1,62 @@
 using UnityEngine;
-
-public class NewMonoBehaviourScript : MonoBehaviour
+public enum GameState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Menu,
+    SetupPhase,
+    WavePhase,
+    GameOver
+}
+public class ScrollWheelManager : MonoBehaviour
+{
+    public GameObject[] towers;
+    GameObject activeTower;
+    int activeTowerIndex = 0;
+    public GameState currentGameState = GameState.SetupPhase;
     void Start()
     {
-        
+        activeTower = towers[activeTowerIndex];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
+        {
+            ScrollTowers();
+            SpawnTower();
+        }
+    }
+
+    void ScrollTowers()
+    {
+        float scrollWheelValue = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollWheelValue > 0)
+        {
+            activeTowerIndex = (activeTowerIndex - 1 + towers.Length) % towers.Length;
+            activeTower = towers[activeTowerIndex];
+            Debug.Log("Active Tower: " + activeTower.name);
+        }  
+        if (scrollWheelValue < 0)
+        {
+            activeTowerIndex = (activeTowerIndex + 1 + towers.Length) % towers.Length;
+            activeTower = towers[activeTowerIndex];
+            Debug.Log("Active Tower: " + activeTower.name);
+        }
+    }
+
+    void SpawnTower(){
+        if (Input.GetMouseButtonDown(2))
+        {
+            Instantiate(activeTower, FindMousePosition(), Quaternion.identity);
+            activeTower.transform.position = new Vector3(activeTower.transform.position.x, activeTower.transform.position.y, 0);
+        }
+    }
+
+    Vector3 FindMousePosition()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Mathf.Abs(Camera.main.transform.position.z); 
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Debug.Log("Mouse World Position: " + worldPos);
+        return worldPos;
     }
 }
