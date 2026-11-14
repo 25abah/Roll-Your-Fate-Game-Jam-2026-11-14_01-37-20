@@ -29,7 +29,6 @@ public class ScrollWheelManager : MonoBehaviour
         if (gameplay.health <= 0)
         {
             currentGameState = GameState.GameOver;
-            Debug.Log("Game Over");
         }
     }
 
