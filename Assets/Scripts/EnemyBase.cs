@@ -3,11 +3,16 @@ using System.Collections.Generic;
 
 public class EnemyBase : MonoBehaviour
 {
-    public float health;
-    public int damage;
-    public int spawnRate;
-    public float speed;
+    [SerializeField] protected float health;
+    [SerializeField] protected int damage;
+    [SerializeField] protected int spawnRate;
+    [SerializeField] protected float speed;
     [SerializeField] private Gameplay gameplay;
+
+    public int getSpawnRate() 
+    {
+        return spawnRate;
+    }
 
     void Start()
     {
