@@ -9,13 +9,18 @@ public enum GameState
 public class ScrollWheelManager : MonoBehaviour
 {
     public GameObject[] towers;
+    public GameObject[] tethers;
     GameObject activeTower;
+    GameObject activeTether;
     int activeTowerIndex = 0;
+    int activeTetherIndex = 0;
     public GameState currentGameState = GameState.SetupPhase;
     Gameplay gameplay;
+    GameObject currentObject = null;
     void Start()
     {
         activeTower = towers[activeTowerIndex];
+        activeTether = tethers[activeTetherIndex];
         gameplay = GetComponent<Gameplay>();
     }
 
@@ -23,7 +28,14 @@ public class ScrollWheelManager : MonoBehaviour
     {
         if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
         {
-            ScrollTowers();
+            if (currentObject == null || !currentObject.CompareTag("Tether"))
+            {
+                ScrollTowers();
+            }
+            else
+            {
+                ScrollTethers();
+            }
             SpawnTower();
         }
         if (gameplay.health <= 0)
@@ -50,11 +62,41 @@ public class ScrollWheelManager : MonoBehaviour
         }
     }
 
+    void ScrollTethers()
+    {
+        float scrollWheelValue = Input.GetAxis("Mouse ScrollWheel");
+        if (scrollWheelValue > 0)
+        {
+            activeTetherIndex = (activeTetherIndex - 1 + tethers.Length) % tethers.Length;
+            activeTether = tethers[activeTetherIndex];
+            Debug.Log("Active Tether: " + activeTether.name);
+        }
+        if (scrollWheelValue < 0)
+        {
+            activeTetherIndex = (activeTetherIndex + 1 + tethers.Length) % tethers.Length;
+            activeTether = tethers[activeTetherIndex];
+            Debug.Log("Active Tether: " + activeTether.name);
+        }
+    }
+
     void SpawnTower(){
         if (Input.GetMouseButtonDown(2))
         {
-            Instantiate(activeTower, FindMousePosition(), Quaternion.identity);
-            activeTower.transform.position = new Vector3(activeTower.transform.position.x, activeTower.transform.position.y, 0);
+            if (currentObject == null)
+            {
+                currentObject = Instantiate(activeTower, FindMousePosition(), Quaternion.identity);
+                activeTower.transform.position = new Vector3(activeTower.transform.position.x, activeTower.transform.position.y, 0);
+            }
+            else if (currentObject.CompareTag("Tower"))
+            {
+                currentObject = currentObject.GetComponent<TowerBase>().SetNextTether(FindMousePosition(), activeTether);
+                activeTether.transform.position = new Vector3(activeTether.transform.position.x, activeTether.transform.position.y, 0);
+            }
+            else
+            {
+                currentObject = currentObject.GetComponent<TetherBase>().SetNextTower(activeTower);
+                activeTether.transform.position = new Vector3(activeTether.transform.position.x, activeTether.transform.position.y, 0);
+            }
         }
     }
 

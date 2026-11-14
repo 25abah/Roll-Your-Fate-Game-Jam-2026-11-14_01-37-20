@@ -12,11 +12,12 @@ public class TetherBase : MonoBehaviour
         this.tetherVec = tetherVec;
     }
 
-    public void SetNextTower(GameObject tower)
+    public GameObject SetNextTower(GameObject tower)
     {
         Vector3 towerPosition = transform.position + tetherVec / 2;
         GameObject newTower = GameObject.Instantiate<GameObject>(tower, towerPosition, Quaternion.identity);
         nextTower = newTower.GetComponent<TowerBase>();
         nextTower.GetLastTether(this);
+        return newTower;
     }
 }

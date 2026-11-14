@@ -20,7 +20,7 @@ public abstract class TowerBase : MonoBehaviour
     /// </summary>
     protected abstract void SetVariables();
 
-    public void SetNextTower(Vector3 position, GameObject tether)
+    public GameObject SetNextTether(Vector3 position, GameObject tether)
     {
         Vector3 tetherVec = position - transform.position;
         if (tetherVec.magnitude > maxDistance)
@@ -49,6 +49,7 @@ public abstract class TowerBase : MonoBehaviour
         newTether.transform.Rotate(Vector3.forward, tetherAngle);
         nextTether = newTether.GetComponent<TetherBase>();
         nextTether.GetLastTower(tetherVec, this);
+        return newTether;
     }
 
     public void GetLastTether(TetherBase tether)
