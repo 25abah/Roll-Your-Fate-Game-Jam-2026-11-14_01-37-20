@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1768731778440783564}
   - component: {fileID: 8039690716733973638}
   - component: {fileID: 2072633610966577691}
+  - component: {fileID: 5292521659054805654}
   m_Layer: 0
   m_Name: TowerExmple3
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,3 +157,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5292521659054805654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103819396792829661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da51f6f02b24369478a179202b02d107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerGenericTest
+  maxDistance: 5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1655424001990884633}
   - component: {fileID: 4654178027811713629}
   - component: {fileID: 4213621327551517350}
+  - component: {fileID: 8248429332071531299}
   m_Layer: 0
   m_Name: TowerExample2
   m_TagString: Tower
@@ -170,3 +171,16 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 1
+--- !u!114 &8248429332071531299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721537402718007831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da51f6f02b24369478a179202b02d107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerGenericTest
+  maxDistance: 5

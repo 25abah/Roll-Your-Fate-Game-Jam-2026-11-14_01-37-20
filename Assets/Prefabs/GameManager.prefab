@@ -48,4 +48,6 @@ MonoBehaviour:
   - {fileID: 5630332183179177806, guid: b7574714c3a5ccc47a52ee5a6428401b, type: 3}
   - {fileID: 8721537402718007831, guid: eec250a9d4a1a4e4cb11a34c30f0d387, type: 3}
   - {fileID: 103819396792829661, guid: 71321ebd8a95f7245824e3119c6f555a, type: 3}
+  tethers:
+  - {fileID: 3140947933745422716, guid: 1c95e0b68156214478555b94f4c9e411, type: 3}
   currentGameState: 1
