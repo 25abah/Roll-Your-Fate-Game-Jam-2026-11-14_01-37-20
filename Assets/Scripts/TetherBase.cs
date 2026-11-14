@@ -20,4 +20,13 @@ public class TetherBase : MonoBehaviour
         nextTower.GetLastTether(this);
         return newTower;
     }
+
+    public void Break()
+    {
+        if (nextTower != null)
+        {
+            nextTower.Break();
+        }
+        Destroy(this);
+    }
 }
