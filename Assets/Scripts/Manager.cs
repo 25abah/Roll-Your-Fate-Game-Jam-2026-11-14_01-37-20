@@ -22,6 +22,7 @@ public class Manager : MonoBehaviour
     float timer = 20f;
     float timerWave = 60f;
     [SerializeField] private UIManager uiManager;
+    private int waveCount = 0;
     void Start()
     {
         activeTower = towers[activeTowerIndex];
@@ -40,6 +41,7 @@ public class Manager : MonoBehaviour
             {
                 uiManager.disableTitleScreen();
                 currentGameState = GameState.SetupPhase;
+                waveCount++;
             }
         }
         else if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
@@ -62,6 +64,7 @@ public class Manager : MonoBehaviour
                 if (timerWave <= 0)
                 {
                     currentGameState = GameState.SetupPhase;
+                    waveCount++;
                     timerWave = 0.0f;
                     timer = 20f;
                 } 

@@ -15,7 +15,8 @@ public abstract class TowerBase : MonoBehaviour
     bool shooting = false;
     protected int fiberOpticsAmount = 0;
     [SerializeField] GameObject projectile;
-
+    [SerializeField] private Sprite projectileSprite;
+     
     [SerializeField] private float maxDistance = 5f;
 
     void Awake()
@@ -138,6 +139,7 @@ public abstract class TowerBase : MonoBehaviour
         newProjectile.transform.Rotate(Vector3.forward, projectileAngle);
         newProjectile.GetComponent<Projectile>().SetDamage(damage);
         newProjectile.GetComponent<Rigidbody2D>().linearVelocity = projectilePath * 2;
+        newProjectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
 
         //targets[0].GetComponent<EnemyBase>().TakeDamage(damage);
         Debug.Log("FIRE!");
