@@ -21,8 +21,8 @@ public class Manager : MonoBehaviour
     GameObject currentObject = null;
     float timer = 20f;
     float timerWave = 60f;
+    public int waveCount { get; private set; }
     [SerializeField] private UIManager uiManager;
-    private int waveCount = 0;
     void Start()
     {
         activeTower = towers[activeTowerIndex];

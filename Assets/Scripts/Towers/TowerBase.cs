@@ -139,7 +139,10 @@ public abstract class TowerBase : MonoBehaviour
         newProjectile.transform.Rotate(Vector3.forward, projectileAngle);
         newProjectile.GetComponent<Projectile>().SetDamage(damage);
         newProjectile.GetComponent<Rigidbody2D>().linearVelocity = projectilePath * 2;
-        newProjectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+        if (projectileSprite != null)
+        {
+            newProjectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+        }
 
         //targets[0].GetComponent<EnemyBase>().TakeDamage(damage);
         Debug.Log("FIRE!");
