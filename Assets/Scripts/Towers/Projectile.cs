@@ -3,6 +3,17 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private int damage;
+    private const float despawn = 2;
+    private float despawnTimer = 0;
+
+    private void FixedUpdate()
+    {
+        despawnTimer += Time.fixedDeltaTime;
+        if (despawnTimer >= despawn)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void SetDamage(int damage)
     {

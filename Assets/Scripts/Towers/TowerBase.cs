@@ -36,6 +36,10 @@ public abstract class TowerBase : MonoBehaviour
         if (shooting)
         {
             cooldown += Time.fixedDeltaTime;
+            if (targets.Count == 0)
+            {
+                shooting = false;
+            }
         }
     }
 
@@ -112,10 +116,6 @@ public abstract class TowerBase : MonoBehaviour
                 targets.Remove(collision.gameObject);
                 return;
             }
-        }
-        if (targets.Count == 0)
-        {
-            shooting = false;
         }
     }
 
