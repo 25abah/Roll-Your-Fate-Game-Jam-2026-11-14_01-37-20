@@ -21,14 +21,13 @@ public class UIManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void updateCurrency(int currency)
     {
-        
+        towerSelecter.updateBit(currency);
     }
     public void updateTimer( float time)
     {
-        timerText.text = time.ToString() + " S";
+        timerText.text = time.ToString("0.00") + "s";
         
     }
     public void updatehpBar( float hp)
@@ -58,7 +57,7 @@ public class UIManager : MonoBehaviour
     }
     public void enableGameOver()
     {
-        gameOverScreen.SetActive(false);
+        gameOverScreen.SetActive(true);
     }
     public void updateDescription(string name,int cost, string unitDescription,string stats)
     {

@@ -2,26 +2,35 @@ using UnityEngine;
 
 public class Gameplay : MonoBehaviour
 {
-    public float health;
-    public int currency;
-    public int counter = 0;
+    [SerializeField] private float health;
+    [SerializeField] private int currency;
+    [SerializeField] private int counter = 0;
     [SerializeField] private EnemyBase[] enemies;
-    [SerializeField] private ScrollWheelManager scrollWheelManager;
+    [SerializeField] private Manager manager;
+    [SerializeField] private UIManager uiManager;
+
+    public int addCurrency(int money)
+    {
+        currency += money;
+        return currency;
+    }
 
     void Start()
     {
         health = 100f;
         currency = 0;
-        scrollWheelManager = GameObject.Find("GameManager").GetComponent<ScrollWheelManager>();
+        manager = GameObject.Find("GameManager").GetComponent<Manager>();
+        uiManager = GameObject.Find("Full UI").GetComponent<UIManager>();
     }
 
     void FixedUpdate()
     {
-        if (scrollWheelManager.currentGameState != GameState.GameOver)
+        if (manager.currentGameState == GameState.WavePhase)
         {
             counter++;
             SpawnEnemy(5f);
-        }
+            uiManager.updateCurrency(currency);
+        } 
         else
         {
             GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -33,7 +42,15 @@ public class Gameplay : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(float spawnTime){
+    public float TakeDamage(int damage)
+    {
+        health -= damage;
+        uiManager.updatehpBar(health/100);
+        return health;
+    }
+
+    void SpawnEnemy(float spawnTime)
+    {
         if (counter == 50*spawnTime)
         {
             int enemyNum = Random.Range(1,1000);
