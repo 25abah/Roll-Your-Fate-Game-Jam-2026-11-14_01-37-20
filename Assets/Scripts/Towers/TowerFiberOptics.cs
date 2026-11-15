@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class TowerFiberOptics : TowerBase
 {
-    protected override void SetVariables()
+    public override void SetVariables()
     {
         price = 20;
         damage = 0;
         range = 0;
         fiberOpticsAmount = 8;
-        lastTether.FiberOptic(fiberOpticsAmount, true);
+        if (lastTether != null)
+        {
+            lastTether.FiberOptic(fiberOpticsAmount, true);
+        }
+        name = "Fiber Optics";
+        description = "Support tower that boosts the damage of other towers.";
     }
 
     public override void Break()

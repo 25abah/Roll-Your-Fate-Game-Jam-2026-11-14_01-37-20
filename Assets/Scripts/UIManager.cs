@@ -62,9 +62,9 @@ public class UIManager : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
-    public void updateDescription(string name,int cost, string unitDescription,string stats)
+    public void updateDescription(TowerBase towerbase)
     {
-        towerSelecter.updateDescription(name,cost,unitDescription,stats);
+        towerSelecter.updateDescription(towerbase);
     }
     public void updateRoundText(int roundNumber,GameState gameState)
     {

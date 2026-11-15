@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class TowerSpeaker : TowerBase
 {
-    protected override void SetVariables()
+    public override void SetVariables()
     {
         price = 15;
         damage = 3;
         range = 6;
+        name = "Speaker";
+        description = "AOE tower that hits enemies all around it.";
     }
 
     protected override void ShootTarget()
