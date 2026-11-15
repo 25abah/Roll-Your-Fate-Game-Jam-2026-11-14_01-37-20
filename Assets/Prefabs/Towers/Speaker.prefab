@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.00847, y: -0.01289, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,6 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerSpeaker
   projectile: {fileID: 366141224807391, guid: db2178b043135164dbc9b4f3e2bb1a0c, type: 3}
+  projectileSprite: {fileID: -4552695597810917545, guid: 5aa7d51e7c4b2694e82d90ff1113335c, type: 3}
+  anim: {fileID: 0}
   maxDistance: 5
 --- !u!95 &7602242588411859847
 Animator:
