@@ -423,7 +423,8 @@ MonoBehaviour:
   - {fileID: 103819396792829661, guid: 71321ebd8a95f7245824e3119c6f555a, type: 3}
   tethers:
   - {fileID: 3140947933745422716, guid: 1c95e0b68156214478555b94f4c9e411, type: 3}
-  currentGameState: 1
+  currentGameState: 0
+  uiManager: {fileID: 0}
 --- !u!1001 &1116869763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -523,6 +524,10 @@ PrefabInstance:
     - target: {fileID: 4539187126675840500, guid: b6f061f366c88c648bd7e4cd6e2c73d0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032100507021922733, guid: b6f061f366c88c648bd7e4cd6e2c73d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8081357137442756402, guid: b6f061f366c88c648bd7e4cd6e2c73d0, type: 3}
       propertyPath: m_IsActive

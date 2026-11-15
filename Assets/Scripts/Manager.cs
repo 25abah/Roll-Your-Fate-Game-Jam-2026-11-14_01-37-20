@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public enum GameState
 {
     Menu,
@@ -14,20 +16,56 @@ public class Manager : MonoBehaviour
     GameObject activeTether;
     int activeTowerIndex = 0;
     int activeTetherIndex = 0;
-    public GameState currentGameState = GameState.SetupPhase;
+    public GameState currentGameState = GameState.Menu;
     Gameplay gameplay;
     GameObject currentObject = null;
+    float timer = 20f;
+    float timerWave = 60f;
+    [SerializeField] private UIManager uiManager;
     void Start()
     {
         activeTower = towers[activeTowerIndex];
         activeTether = tethers[activeTetherIndex];
         gameplay = GetComponent<Gameplay>();
+        uiManager = GameObject.Find("Full UI").GetComponent<UIManager>();
+
     }
 
     void Update()
     {
-        if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
+        if (currentGameState == GameState.Menu)
         {
+            uiManager.enableTitleScreen();
+            if (Input.GetMouseButtonDown(2))
+            {
+                uiManager.disableTitleScreen();
+                currentGameState = GameState.SetupPhase;
+            }
+        }
+        else if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
+        {
+            if(currentGameState == GameState.SetupPhase)
+            {
+                uiManager.updateTimer(timer);
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    currentGameState = GameState.WavePhase;
+                    timer = 0.0f;
+                    timerWave = 60f;
+                }
+            }
+            else
+            {
+                uiManager.updateTimer(timerWave);
+                timerWave -= Time.deltaTime;
+                if (timerWave <= 0)
+                {
+                    currentGameState = GameState.SetupPhase;
+                    timerWave = 0.0f;
+                    timer = 20f;
+                } 
+            }
             if (currentObject == null || !currentObject.CompareTag("Tether"))
             {
                 ScrollTowers();
@@ -38,9 +76,17 @@ public class Manager : MonoBehaviour
             }
             SpawnTower();
         }
-        if (gameplay.health <= 0)
+        if (gameplay.TakeDamage(0) <= 0)
         {
             currentGameState = GameState.GameOver;
+            uiManager.enableGameOver();
+        }
+        if (currentGameState == GameState.GameOver)
+        {
+            if (Input.GetMouseButtonDown(2))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
@@ -51,12 +97,14 @@ public class Manager : MonoBehaviour
         {
             activeTowerIndex = (activeTowerIndex - 1 + towers.Length) % towers.Length;
             activeTower = towers[activeTowerIndex];
+            uiManager.previousTower();
             Debug.Log("Active Tower: " + activeTower.name);
         }  
         if (scrollWheelValue < 0)
         {
             activeTowerIndex = (activeTowerIndex + 1 + towers.Length) % towers.Length;
             activeTower = towers[activeTowerIndex];
+            uiManager.nextTower();
             Debug.Log("Active Tower: " + activeTower.name);
         }
     }
