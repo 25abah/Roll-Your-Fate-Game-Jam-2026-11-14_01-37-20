@@ -18,7 +18,7 @@ public class Gameplay : MonoBehaviour
     void Start()
     {
         health = 100f;
-        currency = 0;
+        currency = 10;
         manager = GameObject.Find("GameManager").GetComponent<Manager>();
         uiManager = GameObject.Find("Full UI").GetComponent<UIManager>();
     }
@@ -47,6 +47,15 @@ public class Gameplay : MonoBehaviour
         health -= damage;
         uiManager.updatehpBar(health/100);
         return health;
+    }
+
+    public bool CanPay(int price)
+    {
+        if (currency >= price)
+        {
+            return true;
+        }
+        return false;
     }
 
     void SpawnEnemy(float spawnTime)
