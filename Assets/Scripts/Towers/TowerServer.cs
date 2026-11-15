@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TowerServer : TowerBase
 {
+    [SerializeField] Gameplay gameplay;
     private const float coolDown = 2;
     private float coolDownCount = 0;
     protected override void SetVariables()
@@ -15,7 +16,7 @@ public class TowerServer : TowerBase
     {
         if (coolDownCount >= coolDown)
         {
-            //TODO: increase money
+            gameplay.addCurrency(10);
             coolDownCount -= coolDown;
         }
         coolDownCount += Time.fixedDeltaTime;

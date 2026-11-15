@@ -75,4 +75,14 @@ public class EnemyBase : MonoBehaviour
     {
         health -= damage;
     }
+
+    public void GetStronger(int waveCount)
+    {
+        if (waveCount > 1)
+        {
+            damage += waveCount / 2;
+            health *= 2;
+            speed *= 1.5f;
+        }
+    }
 }

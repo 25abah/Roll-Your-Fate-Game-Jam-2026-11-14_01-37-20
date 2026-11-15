@@ -130,7 +130,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8721537402718007831}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7df2c34994d0f64eab871c12c5dfe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerFax
+  projectile: {fileID: 366141224807391, guid: db2178b043135164dbc9b4f3e2bb1a0c, type: 3}
   maxDistance: 5
 --- !u!95 &-637806449466157734
 Animator:

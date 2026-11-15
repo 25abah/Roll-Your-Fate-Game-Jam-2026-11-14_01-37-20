@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7917817742309455678}
   - component: {fileID: 1676381674097489853}
   - component: {fileID: -8126615284475702514}
-  - component: {fileID: 858164722348012719}
   m_Layer: 0
   m_Name: Server
   m_TagString: Tower
@@ -86,8 +85,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -381610908, guid: e5b8b36936a20de42bf20d218b91bcd5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 259317a3fa77b4619b4356af5648368f, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,7 +133,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.57, y: 2.23}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -220,25 +219,3 @@ MonoBehaviour:
   projectile: {fileID: 366141224807391, guid: db2178b043135164dbc9b4f3e2bb1a0c, type: 3}
   maxDistance: 5
   gameplay: {fileID: -3684749686351978000, guid: b0661bb24b007694bb925d2f6b1ba258, type: 3}
---- !u!95 &858164722348012719
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5630332183179177806}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f789c9b3d26eebb46850b2e2b674ec9a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

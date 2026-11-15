@@ -12,8 +12,11 @@ public abstract class TowerBase : MonoBehaviour
     protected List<GameObject> targets = new List<GameObject>();
     private const float cooldownShot = 0.5f;
     private float cooldown = 0f;
+    bool shooting = false;
     protected int fiberOpticsAmount = 0;
-
+    [SerializeField] GameObject projectile;
+    [SerializeField] private Sprite projectileSprite;
+     
     [SerializeField] private float maxDistance = 5f;
 
     void Awake()
@@ -30,7 +33,10 @@ public abstract class TowerBase : MonoBehaviour
             ShootTarget();
             cooldown -= cooldownShot;
         }
-        cooldown += Time.fixedDeltaTime;
+        if (shooting)
+        {
+            cooldown += Time.fixedDeltaTime;
+        }
     }
 
     /// <summary>
@@ -93,6 +99,7 @@ public abstract class TowerBase : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             targets.Add(collision.gameObject);
+            shooting = true;
         }
     }
 
@@ -106,11 +113,40 @@ public abstract class TowerBase : MonoBehaviour
                 return;
             }
         }
+        if (targets.Count == 0)
+        {
+            shooting = false;
+        }
     }
 
     protected virtual void ShootTarget()
     {
-        targets[0].GetComponent<EnemyBase>().TakeDamage(damage);
+        Vector3 projectilePath = targets[0].transform.position - transform.position;
+        GameObject newProjectile = GameObject.Instantiate<GameObject>(projectile, transform.position, Quaternion.identity);
+        float projectileAngle;
+        if (projectilePath.y < 0)
+        {
+            projectileAngle = 90 - Vector3.Angle(projectilePath, Vector3.right);
+        }
+        else if (projectilePath.y > 0)
+        {
+            projectileAngle = 90 + Vector3.Angle(projectilePath, Vector3.right);
+        }
+        else
+        {
+            projectileAngle = 90;
+        }
+        newProjectile.transform.Rotate(Vector3.forward, projectileAngle);
+        newProjectile.GetComponent<Projectile>().SetDamage(damage);
+        newProjectile.GetComponent<Rigidbody2D>().linearVelocity = projectilePath * 2;
+        newProjectile.GetComponent<SpriteRenderer>().sprite = projectileSprite;
+
+        //targets[0].GetComponent<EnemyBase>().TakeDamage(damage);
+        Debug.Log("FIRE!");
+        if (targets.Count == 0)
+        {
+            shooting = false;
+        }
     }
 
     public void FiberOptics(int amount, bool back)
