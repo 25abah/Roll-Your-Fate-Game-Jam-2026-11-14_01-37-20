@@ -12,9 +12,11 @@ public class TowerSpeaker : TowerBase
     }
 
     protected override void ShootTarget()
-    {
+    {   anim.SetBool("isAttacking", true);
+        hasShot = true;
         foreach (GameObject target in targets)
         {
+            
             target.GetComponent<EnemyBase>().TakeDamage(damage);
         }
     }

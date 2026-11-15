@@ -12,12 +12,15 @@ public class TowerServer : TowerBase
         range = 0;
         name = "Server";
         description = "Support tower that grants bits over time.";
+        gameplay = GameObject.Find("GameManager").GetComponent<Gameplay>();
     }
 
     private void FixedUpdate()
     {
         if (coolDownCount >= coolDown)
         {
+            anim.SetBool("isAttacking", true);
+            hasShot = true;
             gameplay.addCurrency(10);
             coolDownCount -= coolDown;
         }
