@@ -7,6 +7,7 @@ public class TowerSpeaker : TowerBase
         price = 15;
         damage = 3;
         range = 6;
+        fiberOpticsAmount = 0;
         name = "Speaker";
         description = "AOE tower that hits enemies all around it.";
     }

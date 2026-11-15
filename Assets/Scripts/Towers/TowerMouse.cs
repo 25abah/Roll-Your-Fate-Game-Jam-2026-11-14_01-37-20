@@ -7,6 +7,7 @@ public class TowerMouse : TowerBase
         price = 10;
         range = 3;
         damage = 5;
+        fiberOpticsAmount = 0;
         name = "Mouse";
         description = "Short ranged tower.";
     }

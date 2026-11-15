@@ -15,15 +15,16 @@ public abstract class TowerBase : MonoBehaviour
     private const float cooldownShot = 0.5f;
     private float cooldown = 0f;
     bool shooting = false;
-    protected int fiberOpticsAmount = 0;
+    protected int fiberOpticsAmount;
     [SerializeField] GameObject projectile;
     [SerializeField] private Sprite projectileSprite;
     protected bool hasShot = false;
     public Animator anim;
      
     [SerializeField] private float maxDistance = 5f;
+    protected int realDamage;
 
-    void Awake()
+    void Start()
     {
         anim = GetComponent<Animator>();
         SetVariables();
@@ -150,7 +151,7 @@ public abstract class TowerBase : MonoBehaviour
             projectileAngle = 90;
         }
         newProjectile.transform.Rotate(Vector3.forward, projectileAngle);
-        newProjectile.GetComponent<Projectile>().SetDamage(damage);
+        newProjectile.GetComponent<Projectile>().SetDamage(realDamage);
         newProjectile.GetComponent<Rigidbody2D>().linearVelocity = projectilePath * 2;
         if (projectileSprite != null)
         {
@@ -175,9 +176,17 @@ public abstract class TowerBase : MonoBehaviour
         {
             lastTether.FiberOptic(fiberOpticsAmount, back);
         }
-        else if (nextTether != null)
+        else if (nextTether != null && !back)
         {
             nextTether.FiberOptic(fiberOpticsAmount, back);
+        }
+        if (fiberOpticsAmount == 0)
+        {
+            realDamage = damage;
+        }
+        else
+        {
+            realDamage = damage * fiberOpticsAmount;
         }
     }
 }

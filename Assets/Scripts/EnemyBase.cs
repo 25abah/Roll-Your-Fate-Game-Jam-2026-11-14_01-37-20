@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected int spawnRate;
     [SerializeField] protected float speed;
     [SerializeField] private Gameplay gameplay;
+    public bool underBridge { get; private set; } = false;
 
     public int getSpawnRate() 
     {
@@ -83,6 +84,24 @@ public class EnemyBase : MonoBehaviour
             damage += waveCount / 2;
             health *= 2;
             speed *= 1.5f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bridge"))
+        {
+            underBridge = true;
+            Debug.Log("bridge");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bridge"))
+        {
+            underBridge = false;
+            Debug.Log("not bridge");
         }
     }
 }
