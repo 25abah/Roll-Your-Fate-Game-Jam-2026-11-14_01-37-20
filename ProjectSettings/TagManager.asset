@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Tether
   - Enemy
+  - Bridge
   layers:
   - Default
   - TransparentFX

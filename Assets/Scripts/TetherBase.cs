@@ -36,7 +36,10 @@ public class TetherBase : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            this.Break();
+            if (!collision.gameObject.GetComponent<EnemyBase>().underBridge)
+            {
+                this.Break();
+            }
         }
     }
 
