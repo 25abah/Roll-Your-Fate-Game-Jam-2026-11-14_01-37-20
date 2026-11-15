@@ -20,4 +20,21 @@ public class TetherBase : MonoBehaviour
         nextTower.GetLastTether(this);
         return newTower;
     }
+
+    public void Break()
+    {
+        if (nextTower != null)
+        {
+            nextTower.Break();
+        }
+        Destroy(this);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            this.Break();
+        }
+    }
 }
