@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class EnemyBase : MonoBehaviour
 {
-    [SerializeField] protected float health;
+    [SerializeField] public float health;
     [SerializeField] protected int damage;
     [SerializeField] protected int spawnRate;
     [SerializeField] protected float speed;

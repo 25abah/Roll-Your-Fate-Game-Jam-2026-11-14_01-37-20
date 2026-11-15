@@ -60,7 +60,9 @@ public class Gameplay : MonoBehaviour
                 Debug.Log("Enemy Spawn Rate" + enemies[i].getSpawnRate());
                 if(enemies[i].getSpawnRate() > enemyNum)
                 {
-                    Instantiate(enemies[i], new Vector3(-8f, 4.4f, 0), Quaternion.identity);
+                    EnemyBase newEnemy = Instantiate(enemies[i], new Vector3(-8f, 4.4f, 0), Quaternion.identity);
+                    newEnemy.GetStronger(manager.waveCount);
+                    Debug.Log(newEnemy.health);
                     break;
                 }
             }
