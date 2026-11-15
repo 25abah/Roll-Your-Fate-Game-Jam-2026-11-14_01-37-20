@@ -9,9 +9,10 @@ public abstract class TowerBase : MonoBehaviour
     protected TetherBase lastTether = null;
     protected TetherBase nextTether = null;
     protected CircleCollider2D targetArea;
-    private List<GameObject> targets = new List<GameObject>();
+    protected List<GameObject> targets = new List<GameObject>();
     private const float cooldownShot = 0.5f;
     private float cooldown = 0f;
+    protected int fiberOpticsAmount = 0;
 
     [SerializeField] private float maxDistance = 5f;
 
@@ -69,6 +70,7 @@ public abstract class TowerBase : MonoBehaviour
         newTether.transform.Rotate(Vector3.forward, tetherAngle);
         nextTether = newTether.GetComponent<TetherBase>();
         nextTether.GetLastTower(tetherVec, this);
+        nextTether.FiberOptic(fiberOpticsAmount, false);
         return newTether;
     }
 
@@ -77,7 +79,7 @@ public abstract class TowerBase : MonoBehaviour
         lastTether = tether;
     }
 
-    public void Break()
+    public virtual void Break()
     {
         if (nextTether != null)
         {
@@ -106,8 +108,24 @@ public abstract class TowerBase : MonoBehaviour
         }
     }
 
-    private void ShootTarget()
+    protected virtual void ShootTarget()
     {
         targets[0].GetComponent<EnemyBase>().TakeDamage(damage);
+    }
+
+    public void FiberOptics(int amount, bool back)
+    {
+        if (amount > fiberOpticsAmount || amount == 0)
+        {
+            fiberOpticsAmount = amount;
+        }
+        if (back && lastTether != null)
+        {
+            lastTether.FiberOptic(fiberOpticsAmount, back);
+        }
+        else if (nextTether != null)
+        {
+            nextTether.FiberOptic(fiberOpticsAmount, back);
+        }
     }
 }

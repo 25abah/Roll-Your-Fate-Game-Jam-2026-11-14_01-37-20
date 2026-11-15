@@ -5,6 +5,7 @@ public class TetherBase : MonoBehaviour
     TowerBase lastTower;
     TowerBase nextTower;
     Vector3 tetherVec;
+    protected int fiberOpticsAmount;
 
     public void GetLastTower(Vector3 tetherVec, TowerBase tower)
     {
@@ -18,6 +19,7 @@ public class TetherBase : MonoBehaviour
         GameObject newTower = GameObject.Instantiate<GameObject>(tower, towerPosition, Quaternion.identity);
         nextTower = newTower.GetComponent<TowerBase>();
         nextTower.GetLastTether(this);
+        nextTower.FiberOptics(fiberOpticsAmount, false);
         return newTower;
     }
 
@@ -35,6 +37,19 @@ public class TetherBase : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             this.Break();
+        }
+    }
+
+    public void FiberOptic(int boostAmount, bool back)
+    {
+        int actualAmount = (int)Mathf.Floor(boostAmount / 2);
+        if (back)
+        {
+            lastTower.FiberOptics(actualAmount, back);
+        }
+        else if (nextTower != null)
+        {
+            nextTower.FiberOptics(actualAmount, back);
         }
     }
 }
