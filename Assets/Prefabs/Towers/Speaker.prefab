@@ -169,4 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecc3d8b99593d94a901038593b5e45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerSpeaker
+  projectile: {fileID: 366141224807391, guid: db2178b043135164dbc9b4f3e2bb1a0c, type: 3}
   maxDistance: 5
