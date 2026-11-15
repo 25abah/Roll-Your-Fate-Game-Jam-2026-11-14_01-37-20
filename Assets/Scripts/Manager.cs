@@ -6,7 +6,7 @@ public enum GameState
     WavePhase,
     GameOver
 }
-public class ScrollWheelManager : MonoBehaviour
+public class Manager : MonoBehaviour
 {
     public GameObject[] towers;
     public GameObject[] tethers;

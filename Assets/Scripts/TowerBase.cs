@@ -101,6 +101,7 @@ public abstract class TowerBase : MonoBehaviour
             if (collision.gameObject == target)
             {
                 targets.Remove(collision.gameObject);
+                return;
             }
         }
     }

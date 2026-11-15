@@ -6,22 +6,22 @@ public class Gameplay : MonoBehaviour
     public int currency;
     public int counter = 0;
     [SerializeField] private EnemyBase[] enemies;
-    [SerializeField] private ScrollWheelManager scrollWheelManager;
+    [SerializeField] private Manager manager;
 
     void Start()
     {
         health = 100f;
         currency = 0;
-        scrollWheelManager = GameObject.Find("GameManager").GetComponent<ScrollWheelManager>();
+        manager = GameObject.Find("GameManager").GetComponent<Manager>();
     }
 
     void FixedUpdate()
     {
-        if (scrollWheelManager.currentGameState != GameState.GameOver)
+        if (manager.currentGameState != GameState.GameOver)
         {
             counter++;
             SpawnEnemy(5f);
-        }
+        } 
         else
         {
             GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
