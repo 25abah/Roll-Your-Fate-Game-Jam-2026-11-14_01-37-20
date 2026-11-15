@@ -30,7 +30,7 @@ public abstract class TowerBase : MonoBehaviour
         SetVariables();
         targetArea = GetComponent<CircleCollider2D>();
         targetArea.radius = range;
-        
+        realDamage = damage;
     }
 
     void FixedUpdate()

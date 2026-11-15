@@ -40,27 +40,27 @@ public class EnemyBase : MonoBehaviour
 
     protected void PathFinding(GameObject enemy)
     {
-        if (enemy.transform.position.y > -4.4f && enemy.transform.position.x < 0)
+        if (enemy.transform.position.y > -1.8f && enemy.transform.position.x < -1.85)
         {
             //Debug.Log("Moving Down on left");
             enemy.transform.position += new Vector3(0, -(speed * Time.deltaTime), 0);
         }
-        else if (enemy.transform.position.y <= -4.4f && enemy.transform.position.x <= 0)
+        else if (enemy.transform.position.y <= -1.8f && enemy.transform.position.x <= -1.85)
         {
             //Debug.Log("Moving Right on bottom");
             enemy.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
-        else if (Mathf.Round(enemy.transform.position.x) == 0 && enemy.transform.position.y <= 4.4f)
+        else if (enemy.transform.position.x >= -1.84 && enemy.transform.position.x < 0 && enemy.transform.position.y <= 2.7f)
         {
             //Debug.Log("Moving Up on middle");
             enemy.transform.position += new Vector3(0, speed * Time.deltaTime, 0);
         }
-        else if (enemy.transform.position.y >= 4.4f && enemy.transform.position.x > 0 && enemy.transform.position.x < 8)
+        else if (enemy.transform.position.y >= 2.7f && enemy.transform.position.x > -1.85 && enemy.transform.position.x < 2.4)
         {
             //Debug.Log("Moving Right on top");
             enemy.transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
         }
-        else if (Mathf.Round(enemy.transform.position.x) == 8)
+        else if (enemy.transform.position.x >= 2.3)
         {
             //Debug.Log("Moving Down on right");
             enemy.transform.position += new Vector3(0, -(speed * Time.deltaTime), 0);
@@ -68,7 +68,7 @@ public class EnemyBase : MonoBehaviour
         else
         {
             Debug.Log("There is an error in the pathfinding algorithm");
-            Destroy(enemy);
+            //Destroy(enemy);
         }
     }
 
