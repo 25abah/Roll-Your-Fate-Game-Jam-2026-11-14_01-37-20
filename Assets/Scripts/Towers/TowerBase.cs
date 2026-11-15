@@ -4,8 +4,10 @@ using System.Collections.Generic;
 public abstract class TowerBase : MonoBehaviour
 {
     public int price { get; protected set; }
-    protected float range;
-    protected int damage;
+    public float range{ get; protected set; }
+    public int damage{ get; protected set; }
+    public string name{ get; protected set; }
+    public string description{ get; protected set; }
     protected TetherBase lastTether = null;
     protected TetherBase nextTether = null;
     protected CircleCollider2D targetArea;
@@ -46,7 +48,7 @@ public abstract class TowerBase : MonoBehaviour
     /// <summary>
     /// set price, range, and damage variables for the tower.
     /// </summary>
-    protected abstract void SetVariables();
+    public abstract void SetVariables();
 
     public GameObject SetNextTether(Vector3 position, GameObject tether)
     {

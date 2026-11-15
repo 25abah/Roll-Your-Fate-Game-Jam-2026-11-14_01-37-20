@@ -25,11 +25,12 @@ public class Gameplay : MonoBehaviour
 
     void FixedUpdate()
     {
+        uiManager.updateCurrency(currency);
         if (manager.currentGameState == GameState.WavePhase)
         {
             counter++;
             SpawnEnemy(5f);
-            uiManager.updateCurrency(currency);
+            
         } 
         else
         {

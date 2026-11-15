@@ -46,6 +46,9 @@ public class Manager : MonoBehaviour
         }
         else if (currentGameState == GameState.SetupPhase || currentGameState == GameState.WavePhase)
         {
+            uiManager.updateRoundText(waveCount, currentGameState);
+            towers[activeTowerIndex].GetComponent<TowerBase>().SetVariables();
+            uiManager.updateDescription(towers[activeTowerIndex].GetComponent<TowerBase>());
             if(currentGameState == GameState.SetupPhase)
             {
                 uiManager.updateTimer(timer);

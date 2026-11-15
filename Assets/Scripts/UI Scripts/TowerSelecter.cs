@@ -68,17 +68,17 @@ public class TowerSelecter : MonoBehaviour
         }
         change();
     }
-    public void updateDescription(string name,int cost, string unitDescription,string stats)
+    public void updateDescription(TowerBase towerbase)
     {
         Text[] descriptionTexts = new Text[description.transform.childCount-1];
         for(int i =1; i<description.transform.childCount;i++)
         {
             descriptionTexts[i-1] = description.transform.GetChild(i).GetComponent<Text>();
         }
-        descriptionTexts[0].text = name;
-        descriptionTexts[1].text = "cost : "+ cost.ToString();
-        descriptionTexts[2].text = unitDescription;
-        descriptionTexts[3].text = stats;
+        descriptionTexts[0].text = towerbase.name;
+        descriptionTexts[1].text = "Cost : "+ towerbase.price.ToString();
+        descriptionTexts[2].text = towerbase.description;
+        descriptionTexts[3].text = "Range: "+ towerbase.range.ToString() + " Damage: " + towerbase.damage.ToString();
 
     }
 

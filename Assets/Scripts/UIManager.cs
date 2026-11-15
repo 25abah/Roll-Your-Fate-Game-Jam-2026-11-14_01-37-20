@@ -10,11 +10,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TowerSelecter towerSelecter;
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private Text roundText;
+
 
     void Start()
     {
-        gameOverScreen = gameObject.transform.GetChild(4).gameObject;
-        titleScreen = gameObject.transform.GetChild(3).gameObject;
+        roundText = gameObject.transform.GetChild(3).gameObject.GetComponent<Text>();
+        gameOverScreen = gameObject.transform.GetChild(5).gameObject;
+        titleScreen = gameObject.transform.GetChild(4).gameObject;
         timerText = gameObject.transform.GetChild(2).GetComponent<Text>();
         hpBar = gameObject.transform.GetChild(1).GetComponent<Slider>();
         towerSelecter = gameObject.transform.GetChild(0).GetComponent<TowerSelecter>();
@@ -59,10 +62,15 @@ public class UIManager : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
-    public void updateDescription(string name,int cost, string unitDescription,string stats)
+    public void updateDescription(TowerBase towerbase)
     {
-        towerSelecter.updateDescription(name,cost,unitDescription,stats);
+        towerSelecter.updateDescription(towerbase);
     }
+    public void updateRoundText(int roundNumber,GameState gameState)
+    {
+        roundText.text = "Round "+roundNumber.ToString() + "("+gameState.ToString()+")";
+    }
+    
 
 
 
