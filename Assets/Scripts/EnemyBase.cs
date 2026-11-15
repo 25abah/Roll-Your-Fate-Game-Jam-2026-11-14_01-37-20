@@ -63,4 +63,9 @@ public class EnemyBase : MonoBehaviour
             Debug.Log("There is an error in the pathfinding algorithm");
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 }

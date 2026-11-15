@@ -5,7 +5,7 @@ public abstract class TowerBase : MonoBehaviour
 {
     protected int price;
     protected float range;
-    protected float damage;
+    protected int damage;
     protected TetherBase lastTether = null;
     protected TetherBase nextTether = null;
     protected CircleCollider2D targetArea;
@@ -107,6 +107,6 @@ public abstract class TowerBase : MonoBehaviour
 
     private void ShootTarget()
     {
-        targets[0].GetComponent<EnemyBase>().health -= damage;
+        targets[0].GetComponent<EnemyBase>().TakeDamage(damage);
     }
 }
