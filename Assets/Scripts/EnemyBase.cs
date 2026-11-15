@@ -26,8 +26,13 @@ public class EnemyBase : MonoBehaviour
             PathFinding(gameObject);
             if (gameObject.transform.position.y < -4.5f)
             {
-                gameplay.health -= damage;
+                gameplay.TakeDamage(damage);
                 Destroy(gameObject);
+            }
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+                gameplay.addCurrency(5);
             }
         }
     }
@@ -59,8 +64,10 @@ public class EnemyBase : MonoBehaviour
             //Debug.Log("Moving Down on right");
             enemy.transform.position += new Vector3(0, -(speed * Time.deltaTime), 0);
         }
-        else{
+        else
+        {
             Debug.Log("There is an error in the pathfinding algorithm");
+            Destroy(enemy);
         }
     }
 

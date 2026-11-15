@@ -1242,7 +1242,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 60.00 S
+  m_Text: 60.00s
 --- !u!1 &5510902165469611109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,7 +1806,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Bits:100
+  m_Text: Bits:0
 --- !u!1001 &2539050039505146221
 PrefabInstance:
   m_ObjectHideFlags: 0
