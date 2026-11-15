@@ -10,6 +10,7 @@ public class TowerServer : TowerBase
         price = 50;
         damage = 0;
         range = 0;
+        fiberOpticsAmount = 0;
         name = "Server";
         description = "Support tower that grants bits over time.";
     }
