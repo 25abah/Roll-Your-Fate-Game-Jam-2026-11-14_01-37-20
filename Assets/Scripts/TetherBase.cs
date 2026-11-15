@@ -27,7 +27,7 @@ public class TetherBase : MonoBehaviour
         {
             nextTower.Break();
         }
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
