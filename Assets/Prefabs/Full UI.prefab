@@ -723,14 +723,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7132075, g: 0.7132075, b: 0.7132075, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1955448553306655712, guid: 6814f3afd6c880e408e058a2b171c5eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2423,7 +2423,7 @@ PrefabInstance:
     - target: {fileID: 5908662872771177179, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5698874909672031122, guid: 4b235a99d5064cc408c2f10a1a8f2162, type: 3}
+      objectReference: {fileID: -1504211055, guid: 665d0b77b1e9e324aa4b7122a75053ba, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
