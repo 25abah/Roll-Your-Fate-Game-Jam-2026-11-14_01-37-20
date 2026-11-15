@@ -7,7 +7,7 @@ public class HackChild : EnemyBase
         health = 30;
         damage = 10;
         spawnRate = 995;
-        speed = 1.5f;
+        speed = 2f;
     }
     
 }

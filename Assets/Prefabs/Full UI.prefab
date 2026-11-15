@@ -59,6 +59,7 @@ MonoBehaviour:
   towerSelecter: {fileID: 0}
   titleScreen: {fileID: 0}
   gameOverScreen: {fileID: 0}
+  roundText: {fileID: 0}
 --- !u!1 &643791188913387504
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,14 +592,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.58431375, g: 0.58431375, b: 0.58431375, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -3134766676913893479, guid: 4d7f0e8ca80169546a6ba4104ecab687, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -919,15 +920,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7660377, g: 0.7660377, b: 0.7660377, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1955448553306655712, guid: 6814f3afd6c880e408e058a2b171c5eb, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1069,14 +1070,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3433962, g: 0.3433962, b: 0.3433962, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.72156864}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1955448553306655712, guid: 6814f3afd6c880e408e058a2b171c5eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1719,8 +1720,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1955448553306655712, guid: 6814f3afd6c880e408e058a2b171c5eb, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1895,6 +1896,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2911903378589875092}
     m_Modifications:
+    - target: {fileID: 950938523632764658, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Color.b
+      value: 0.24705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 950938523632764658, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Color.g
+      value: 0.24705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 950938523632764658, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Color.r
+      value: 0.24705884
+      objectReference: {fileID: 0}
     - target: {fileID: 3340496976874053295, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
       propertyPath: m_IsActive
       value: 1
