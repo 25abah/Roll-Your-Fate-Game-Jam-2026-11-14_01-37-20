@@ -18,20 +18,28 @@ public abstract class TowerBase : MonoBehaviour
     protected int fiberOpticsAmount;
     [SerializeField] GameObject projectile;
     [SerializeField] private Sprite projectileSprite;
+    protected bool hasShot = false;
+    public Animator anim;
      
     [SerializeField] private float maxDistance = 5f;
     protected int realDamage;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         SetVariables();
         targetArea = GetComponent<CircleCollider2D>();
         targetArea.radius = range;
-        realDamage = damage;
+        
     }
 
     void FixedUpdate()
     {
+        if (hasShot)
+        {
+            anim.SetBool("isAttacking", false);
+            hasShot = false;
+        }
         if (targets.Count > 0 && cooldown >= cooldownShot)
         {
             ShootTarget();
@@ -125,6 +133,8 @@ public abstract class TowerBase : MonoBehaviour
 
     protected virtual void ShootTarget()
     {
+        anim.SetBool("isAttacking", true);
+        hasShot = true;
         Vector3 projectilePath = targets[0].transform.position - transform.position;
         GameObject newProjectile = GameObject.Instantiate<GameObject>(projectile, transform.position, Quaternion.identity);
         float projectileAngle;
@@ -153,7 +163,7 @@ public abstract class TowerBase : MonoBehaviour
         if (targets.Count == 0)
         {
             shooting = false;
-        }
+        } 
     }
 
     public void FiberOptics(int amount, bool back)
