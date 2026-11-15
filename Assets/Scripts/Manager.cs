@@ -135,29 +135,29 @@ public class Manager : MonoBehaviour
     void SpawnTower(){
         if (Input.GetMouseButtonDown(2))
         {
-            if (currentObject == null)
-            {
-                if (gameplay.CanPay(activeTower.GetComponent<TowerBase>().price))
+                if (currentObject == null)
                 {
-                    gameplay.addCurrency(-activeTower.GetComponent<TowerBase>().price);
-                    currentObject = Instantiate(activeTower, FindMousePosition(), Quaternion.identity);
-                    activeTower.transform.position = new Vector3(activeTower.transform.position.x, activeTower.transform.position.y, 0);
+                    if (gameplay.CanPay(activeTower.GetComponent<TowerBase>().price))
+                    {
+                        gameplay.addCurrency(-activeTower.GetComponent<TowerBase>().price);
+                        currentObject = Instantiate(activeTower, FindMousePosition(), Quaternion.identity);
+                        activeTower.transform.position = new Vector3(activeTower.transform.position.x, activeTower.transform.position.y, 0);
+                    }
                 }
-            }
-            else if (currentObject.CompareTag("Tower"))
-            {
-                currentObject = currentObject.GetComponent<TowerBase>().SetNextTether(FindMousePosition(), activeTether);
-                activeTether.transform.position = new Vector3(activeTether.transform.position.x, activeTether.transform.position.y, 0);
-            }
-            else
-            {
-                if (gameplay.CanPay(activeTower.GetComponent<TowerBase>().price))
+                else if (currentObject.CompareTag("Tower"))
                 {
-                    gameplay.addCurrency(-activeTower.GetComponent<TowerBase>().price);
-                    currentObject = currentObject.GetComponent<TetherBase>().SetNextTower(activeTower);
+                    currentObject = currentObject.GetComponent<TowerBase>().SetNextTether(FindMousePosition(), activeTether);
                     activeTether.transform.position = new Vector3(activeTether.transform.position.x, activeTether.transform.position.y, 0);
                 }
-            }
+                else
+                {
+                    if (gameplay.CanPay(activeTower.GetComponent<TowerBase>().price))
+                    {
+                        gameplay.addCurrency(-activeTower.GetComponent<TowerBase>().price);
+                        currentObject = currentObject.GetComponent<TetherBase>().SetNextTower(activeTower);
+                        activeTether.transform.position = new Vector3(activeTether.transform.position.x, activeTether.transform.position.y, 0);
+                    }
+                }
         }
     }
 
