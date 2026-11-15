@@ -18,7 +18,7 @@ public class TowerSpeaker : TowerBase
         foreach (GameObject target in targets)
         {
             
-            target.GetComponent<EnemyBase>().TakeDamage(damage);
+            target.GetComponent<EnemyBase>().TakeDamage(realDamage);
         }
     }
 }
