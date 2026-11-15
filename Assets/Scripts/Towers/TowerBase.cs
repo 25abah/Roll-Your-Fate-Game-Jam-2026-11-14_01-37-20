@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class TowerBase : MonoBehaviour
 {
-    protected int price;
+    public int price { get; protected set; }
     protected float range;
     protected int damage;
     protected TetherBase lastTether = null;
