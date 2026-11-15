@@ -1906,7 +1906,7 @@ PrefabInstance:
     - target: {fileID: 5908662872771177179, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5698874909672031122, guid: 4b235a99d5064cc408c2f10a1a8f2162, type: 3}
+      objectReference: {fileID: -617609778, guid: 7cb234390c763f0438be1ed9385d1e31, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2009,6 +2009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5908662872771177179, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1147339804, guid: 1eb7f2623f2d95645b2e8015c25eb0bc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2111,6 +2115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5908662872771177179, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -986920439, guid: 773dfbe77d18bbb449d3149982f7c41d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2213,6 +2221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5908662872771177179, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -381610908, guid: e5b8b36936a20de42bf20d218b91bcd5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2315,6 +2327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frame (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5908662872771177179, guid: c48ff474d01b43545b2c8037af7a8094, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5698874909672031122, guid: 4b235a99d5064cc408c2f10a1a8f2162, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
